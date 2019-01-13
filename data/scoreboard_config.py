@@ -135,7 +135,7 @@ class ScoreboardConfig:
 
   def __get_config(self, base_filename):
     filename = "{}.json".format(base_filename)
-    reference_filename = "{}.example".format(filename)
+    reference_filename = "{}.defaults".format(filename)
     reference_config = self.read_json(reference_filename)
     if not reference_filename:
       debug.error("Invalid {} reference config file. Make sure {} exists.".format(base_filename, base_filename))
@@ -149,7 +149,7 @@ class ScoreboardConfig:
 
   def __get_colors(self, base_filename):
     filename = "ledcolors/{}.json".format(base_filename)
-    reference_filename = "{}.example".format(filename)
+    reference_filename = "{}.defaults".format(filename)
     reference_colors = self.read_json(reference_filename)
     if not reference_colors:
       debug.error("Invalid {} reference color file. Make sure {} exists in ledcolors/".format(base_filename, base_filename))
@@ -164,7 +164,7 @@ class ScoreboardConfig:
 
   def __get_layout(self, width, height):
     filename = "ledcoords/w{}h{}.json".format(width, height)
-    reference_filename = "{}.example".format(filename)
+    reference_filename = "{}.defaults".format(filename)
     reference_layout = self.read_json(reference_filename)
     if not reference_layout:
       # Unsupported coordinates
