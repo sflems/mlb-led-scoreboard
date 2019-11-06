@@ -1,5 +1,5 @@
 from rgbmatrix import graphics
-from PIL import Image
+from PIL import Image, ImageDraw
 from utils import get_font, get_file, center_text_position
 from renderers.scrollingtext import ScrollingText
 from renderers.network import NetworkErrorRenderer
@@ -57,12 +57,8 @@ class OffdayRenderer:
 
   def __render_weather_icon(self):
     coords = self.layout.coords("offday.weather_icon")
-    color = self.colors.color("offday.weather_icon")
-    for x in range(self.weather_icon.size[0]):
-      for y in range(self.weather_icon.size[1]):
-        pixel = self.weather_icon.getpixel((x,y))
-        if pixel[3] > 0:
-          self.canvas.SetPixel(coords["x"] + x, coords["y"] + y, color["r"], color["g"], color["b"])
+    self.canvas.SetImage(self.weather_icon.convert('RGB'), coords["x"] + x, coords["y"] + y)
+    
 
   def __render_news_ticker(self):
     coords = self.layout.coords("offday.scrolling_text")
