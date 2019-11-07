@@ -70,7 +70,7 @@ class Weather:
             self.icon_name = "50d"
 
   def temperature_string(self):
-    degree_sign= u'\N{DEGREE SIGN}'
+    degree_sign = '\u00b0'
     return "{}"+degree_sign.format(int(round(self.temp)))
 
   def wind_speed_string(self):
