@@ -70,7 +70,7 @@ class Weather:
             self.icon_name = "50d"
 
   def temperature_string(self):
-    return "{}{}".format(int(round(self.temp)), self.temperature_unit[:1].upper())
+    return "{}$^\circ$".format(int(round(self.temp)))
 
   def wind_speed_string(self):
     speed_unit_string = "m/s" if self.speed_unit == 'meters_sec' else 'mph'
