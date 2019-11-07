@@ -71,7 +71,7 @@ class Weather:
 
   def temperature_string(self):
     degree_sign= u'\N{DEGREE SIGN}'
-    return "{}{}".format(int(round(self.temp)),degree_sign)
+    return "{}"+degree_sign.format(int(round(self.temp)))
 
   def wind_speed_string(self):
     speed_unit_string = "m/s" if self.speed_unit == 'meters_sec' else 'mph'
