@@ -19,7 +19,7 @@ class OffdayRenderer:
     self.weather_icon = None
     if self.data.weather.available():
       image_file = get_file(self.data.weather.icon_filename())
-      self.weather_icon = Image.open(image_file)
+      self.weather_icon = Image.open(image_file).convert('RGB')
 
   def render(self):
     text_len = self.__render_news_ticker()
@@ -57,7 +57,7 @@ class OffdayRenderer:
 
   def __render_weather_icon(self):
     coords = self.layout.coords("offday.weather_icon")
-    self.canvas.SetImage(self.weather_icon.convert('RGB'), coords["x"] + x, coords["y"] + y)
+    self.canvas.SetImage(self.weather_icon, coords["x"], coords["y"])
     
 
   def __render_news_ticker(self):
